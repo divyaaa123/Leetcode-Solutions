@@ -8,25 +8,22 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
+//Take 2 pointers and advance the first pointer by n+1 steps
 class Solution {
 public:
     ListNode* removeNthFromEnd(ListNode* head, int n) {
-        ListNode* dummy = new ListNode(0) ;
-        dummy->next=head;
-        ListNode* t= head;
-        int c=0;
-        while(t!=NULL){
-            c++;
-            t=t->next;
+    
+        ListNode* first= head, *second=head;
+     while(n--){
+           first=first->next;
+       }
+        if(first==NULL)
+            return head->next;
+        while(first->next!=NULL){
+            first=first->next;
+            second=second->next;
         }
-        t=dummy;
-        int x=c-n;
-        while(x>0){
-            x--;
-            t=t->next;
-        }
-   
-      t->next=t->next->next;
-        return dummy->next;
+      second->next=second->next->next;
+        return head;
     }
 };
