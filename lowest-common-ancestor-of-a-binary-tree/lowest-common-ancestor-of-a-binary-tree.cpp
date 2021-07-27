@@ -20,14 +20,19 @@ public:
    bool helper(TreeNode* root, TreeNode* p, TreeNode* q){
            if(root==NULL)
             return false;
-        int left=helper(root->left,p,q);
-        int right= helper(root->right,p,q);
-       int mid=0;
+       bool l=0,r;
+        bool m=helper(root->left,p,q);
+        bool n= helper(root->right,p,q);
+       // int mid=0;
        if(root==p || root==q)
-           mid=1;
-       if(mid+left+right==2)
+           l=true;
+      
+       // cout<<root->val<<" "<<m<<" "<<n<<"\n";
+       if(l+m+n==2)
            ans=root;
-  
-       return (mid+left+right>0);
+      
+       bool x=(l+m+n>=1);
+
+       return x;
     }
 };
