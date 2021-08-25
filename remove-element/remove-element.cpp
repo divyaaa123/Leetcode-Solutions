@@ -6,6 +6,7 @@ public:
             if(nums[i]==val){
                 swap(nums[i],nums[n-1]);
                 n--;
+                
             }
             else
             {
