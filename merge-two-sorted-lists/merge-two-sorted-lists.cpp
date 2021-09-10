@@ -28,7 +28,7 @@ public:
         }
       ans->next=(h1)?h1:h2;
         return dummy.next;
-        //Time Complexity: O(N+M)
+        //Time Complexity: O(min(len(L1), len(L2)))
         //Space Complexity: O(1)
     }
 };
