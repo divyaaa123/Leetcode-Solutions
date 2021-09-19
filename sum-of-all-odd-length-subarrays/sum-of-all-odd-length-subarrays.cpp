@@ -4,16 +4,25 @@ public:
         int c=0;
         int n=arr.size();
         int sum=0;
+        vector<int> a(n+1,0);
+        a[1]=arr[0];
+        a[0]=0;
+        for(int i=2;i<=n;i++){
+            a[i]=a[i-1]+arr[i-1];   
+        }
    for(int i=0;i<n;i++){
-       c=0;
-       for(int j=i;j<n;j++){
+       c+=arr[i];
+      
+       for(int j=i+1;j<n;j++){
            if((j-i)%2==0){
-               for(int k=i;k<=j;k++)
-               c+=arr[k ];
+             
+               c+=a[j+1]-a[i];
+             
            }
+           
        }
-       sum+=c;
+       
    }
-        return sum;
+        return c;
         }
 };
