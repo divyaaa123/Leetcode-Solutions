@@ -29,7 +29,8 @@ public:
                 
                 util(digits,i+1,ans+m[digits[i]][k],v,m);
             }
-    
+    //Time: O(N)
+    //Space: o(N)
         
     }
 };
