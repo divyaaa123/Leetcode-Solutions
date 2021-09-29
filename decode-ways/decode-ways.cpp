@@ -1,26 +1,25 @@
 class Solution {
 public:
     int numDecodings(string s) {
-        vector<int> dp(s.size(),-1);
-       return util(s,0,dp);
+        int n=s.size();
+        vector<int> dp(n+1,0);
+        dp[n]=1;
+        for(int i=n-1;i>=0;i--){
+            if(s[i]=='0')
+            {
+                dp[i]=0;
+                continue;
+            }
+            if(i<n-1 && (s[i]=='1' || (s[i]=='2')&& s[i+1]<='6')){
+                dp[i]=dp[i+2];
+               
+            }
+          
+                dp[i]+=dp[i+1];
+        }
+       return dp[0];
     }
-    int util(string &s,int i, vector<int> &dp){
-           if(i>=s.size())
-            return 1;
-             
-        if(s[i]=='0')
-            return 0;
-        if(dp[i]!=-1)
-            return dp[i];
-     
-       
-        int c=0;
-        int x=0,y=0;
-            x=util(s,i+1,dp);
-        
-            if(i<s.size()-1 && (s[i]=='1' || (s[i]=='2')&& s[i+1]<='6'))
-                y=util(s,i+2,dp);
-        dp[i]=x+y;
-        return x+y;
-    }
+    
 };
+//Time: O(N)
+//space: O(N)
