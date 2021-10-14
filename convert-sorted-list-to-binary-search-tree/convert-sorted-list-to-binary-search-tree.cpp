@@ -21,31 +21,29 @@
  */
 class Solution {
 public:
-    TreeNode* sortedListToBST(ListNode* head) {
-        if(head==NULL)
-            return NULL;
-        return util(head,NULL);
+    TreeNode* sortedListToBST(ListNode* A) {
+     ListNode* B=NULL;
+    return sortedListToBSTHelper(A,B);
     }
-    TreeNode* util(ListNode* head, ListNode* x) {
-        if(head==NULL)
-            return NULL;
-        if(head==x)
-            return NULL;
-        ListNode* fast=head;
-        ListNode* slow=head;
-          
-        while(fast!=x && fast->next!=x){
-       
-            slow=slow->next;
-            fast=fast->next->next;
-        }
-        TreeNode* node=new TreeNode(slow->val );
-        //   cout<<node->val;
-      
-        node->left=util(head, slow);
-        node->right=util(slow->next, x);
-        return node;
+    TreeNode* sortedListToBSTHelper(ListNode* left, ListNode* right) {
+  if(left==right)
+  return NULL;
+    if(left==NULL )
+    return NULL;
+  ListNode* m=middle(left, right);
+  TreeNode* t= new TreeNode(m->val);
+    t->left=sortedListToBSTHelper(left,m);
+  t->right=sortedListToBSTHelper(m->next,right);
+    return t;
+}
+ListNode* middle(ListNode* head,ListNode* A){
+    ListNode* fast=head, *slow=head;
+    while(fast!=A && fast->next!=A){
+        fast=fast->next->next;
+        slow=slow->next;
     }
+    return slow;
+}
 };
 //Time: O(NlogN)
 //space: O(logN)
