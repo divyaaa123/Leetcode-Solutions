@@ -18,3 +18,5 @@ public:
         return 2;
     }
 };
+//Time: O(N/2)
+//Space: O(1)
