@@ -9,8 +9,7 @@ public:
         
     }
     void dfs(vector<vector<int>>&graph,vector<vector<int>>&v,int src,vector<int>& mid){
-      
-        if(src==(graph.size()-1)){
+      if(src==(graph.size()-1)){
             mid.push_back(src);
             //cout<<mid.size();
             v.push_back(mid);
